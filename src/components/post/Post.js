@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react';
+import './post.css';
 
 type Props = {|
     title: string,
@@ -9,16 +10,14 @@ type Props = {|
 
 function Post(props: Props) {
     return (
-        <li>
-            <div className="card text-center">
-                <div className="card-header">
-                    {props.title}
-                </div>
-                <div className="card-body">
-                    <h5 className="card-title">{props.body}</h5>
-                </div>
+        <>
+            <div className="card-header">
+                {props.title}
             </div>
-        </li>
+            <div className="card-body">
+                <h5 className="card-title">{props.body}</h5>
+            </div>
+        </>
     )
 
 }

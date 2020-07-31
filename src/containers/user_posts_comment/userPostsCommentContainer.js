@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import { connect } from 'react-redux'
 import Spinner from "../../components/spinner/Spinner";
 import {getPosts} from "../../actions/postActions";
@@ -6,41 +6,63 @@ import Post from "../../components/post/Post";
 import type {postReducerProp} from "../../reducers/postReducer";
 import {ErrorMessage} from "../../utils/customHooks";
 import {withRouter} from "react-router";
+import {getComments} from "../../actions/commentActions";
 
 type Props = {|
-    getPosts: (id: number) => any,
+    getComments: (id: number) => any,
     postReducer: postReducerProp,
-    match: {
-        params: {
-            id: number
-        }
-    }
+    id: number
 |};
 
-function UserPostsContainer(props: Props) {
+function UserPostsCommentContainer(props: Props) {
     ErrorMessage({reducer: props.postReducer});
+    const [comments, setComments] = useState({
+        data: null,
+        load: false,
+        errorMessage: null
+    });
 
-    const getHandler = useCallback(() => {
-        props.getPosts(props.match.params.id);
-    }, [props.match.params.id]);
+    const [show, setShow] = useState(false);
 
-    useEffect(getHandler,[props.match.params.id]);
+    const getData = () => {
+      setShow(true);
+      props.getComments(props.id);
+    };
+
+    useEffect(() => {
+        if(comments.data){
+            setShow(false);
+        }
+    }, [comments])
+
+    useEffect(() => {
+        const comm = props.postReducer.data.find(res => res.id == props.id);
+        if(comm.comments) {
+            setComments(comm.comments)
+        }
+    }, [props.postReducer]);
 
     return (
-        <Spinner load={props.postReducer.load}>
-            {props.postReducer.data &&
-            <ul>
-                {props.postReducer.data.map((res, index) => {
-                    return (
-                        <li>
-                            <Post key={index} {...res} />
-
-                        </li>
-                    )
-                })}
-            </ul>
+        <>
+            {show &&
+                <button className="btn btn-primary" type="button" disabled>
+                    <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    <span className="sr-only">Loading...</span>
+                </button>
             }
-        </Spinner>
+            {!show &&
+                <button type="button" onClick={getData} className="btn btn-primary btn-lg btn-block">Show Comments</button>
+            }
+            <Spinner load={comments.load}>
+                {comments.data &&
+                <ul>
+                    {comments.data.map((res, index) => {
+                        return <li key={index}>{res.body}</li>
+                    })}
+                </ul>
+                }
+            </Spinner>
+         </>
     );
 }
 
@@ -51,8 +73,8 @@ const  mapStateToProps = (state) => {
 }
 const mapDispatchToProps = dispatch => {
     return {
-        getPosts: (id: number) => dispatch(getPosts(id))
+        getComments: (id: number) => dispatch(getComments(id))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UserPostsContainer));
+export default connect(mapStateToProps, mapDispatchToProps)(UserPostsCommentContainer);

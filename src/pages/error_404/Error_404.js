@@ -1,14 +1,12 @@
 import React from 'react';
-import { connect } from 'react-redux'
-import {getUser} from "./actions/userActions";
 
-function Users() {
+function Error_404() {
   return (
     <div className="App">
-     aaa
+     404
     </div>
   );
 }
 
 
-export default Users;
+export default Error_404;

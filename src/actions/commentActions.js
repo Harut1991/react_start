@@ -1,29 +1,29 @@
-import types from '../action_types/album';
+import types from '../action_types/comment';
 
-export const getAlbums = (id: number) => {
+export const getComments = (id: number) => {
     return {
-        type: types.GET_ALBUM,
+        type: types.GET_COMMENT,
         id: id
     }
 };
 
-export const getAlbumsBehind = (id) => {
+export const getCommentsBehind = (id) => {
   return {
-      type: types.GET_ALBUM_BEHIND,
+      type: types.GET_COMMENT_BEHIND,
       data: id
   }
 };
 
-export const getAlbumsSuccess = (data) => {
+export const getCommentsSuccess = (data) => {
     return {
-        type: types.GET_ALBUM_SUCCESS,
+        type: types.GET_COMMENT_SUCCESS,
         data: data
     }
 };
 
-export const getAlbumsError = (data) => {
+export const getCommentsError = (data) => {
     return {
-        type: types.GET_ALBUM_ERROR,
+        type: types.GET_COMMENT_ERROR,
         data: data
     }
 };

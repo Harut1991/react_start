@@ -1,18 +1,18 @@
 import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
-import types from '../action_types/user';
+import types from '../action_types/post';
 
-function* fetchUser() {
+function* fetchPost(action) {
     try {
-        yield put({type: types.GET_USER_BEHIND});
-        const user = yield fetch('http://jsonplaceholder.typicode.com/users').then((response) => response.json());
-        yield put({type: types.GET_USER_SUCCESS, data: user});
+        yield put({type: types.GET_POST_BEHIND});
+        const user = yield fetch(`${process.env.REACT_APP_API_URL}posts?userId=${action.id}`).then((response) => response.json());
+        yield put({type: types.GET_POST_SUCCESS, data: user});
     } catch (e) {
-        yield put({type: types.GET_USER_ERROR, data: e.message});
+        yield put({type: types.GET_POST_ERROR, data: e.message});
     }
 }
 
-function* userSaga() {
-    yield takeLatest(types.GET_USER, fetchUser);
+function* postSaga() {
+    yield takeLatest(types.GET_POST, fetchPost);
 }
 
-export default userSaga;
+export default postSaga;

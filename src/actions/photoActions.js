@@ -1,28 +1,28 @@
-import types from '../action_types/post';
+import types from '../action_types/photo';
 
-export const getPosts = (id: number) => {
+export const getPhotos = (id: number) => {
     return {
-        type: types.GET_POST,
+        type: types.GET_PHOTO,
         id: id
     }
 };
 
-export const getPostsBehind = () => {
+export const getPhotosBehind = () => {
   return {
-      type: types.GET_POST_BEHIND,
+      type: types.GET_PHOTO_BEHIND,
   }
 };
 
-export const getPostsSuccess = (data) => {
+export const getPhotosSuccess = (data) => {
     return {
-        type: types.GET_POST_SUCCESS,
+        type: types.GET_PHOTO_SUCCESS,
         data: data
     }
 };
 
-export const getPostsError = (data) => {
+export const getPhotosError = (data) => {
     return {
-        type: types.GET_POST_ERROR,
+        type: types.GET_PHOTO_ERROR,
         data: data
     }
 };

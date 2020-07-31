@@ -1,31 +1,43 @@
 import React, {useCallback, useEffect} from 'react';
-import {getUser} from "../../actions/userActions";
 import { connect } from 'react-redux'
 import Spinner from "../../components/spinner/Spinner";
-import type {userReducerProp} from "../../reducers/userReducer";
-import UserContainer from "../../containers/user/userContainer";
 import {ErrorMessage} from "../../utils/customHooks";
+import {getPhotos} from "../../actions/photoActions";
+import type {photoReducerProp} from "../../reducers/photoReducer";
+import PhotoContainer from "../../containers/photo/photoContainer";
 
 type Props = {|
-    getUser: () => any,
-    userReducer: userReducerProp
+    getPhotos: () => any,
+    photoReducer: photoReducerProp
 |};
 
 function Photos(props: Props) {
+  ErrorMessage({reducer: props.photoReducer});
+
+  const getHandler = useCallback(() => {
+      props.getPhotos(props.match.params.id);
+  },[props.match.params.id]);
+
+  useEffect(getHandler,[props.match.params.id]);
 
   return (
-        55
+        <Spinner load={props.photoReducer.load}>
+            {props.photoReducer.data &&
+                <PhotoContainer data={props.photoReducer.data}/>
+            }
+
+        </Spinner>
   );
 }
 
 const  mapStateToProps = (state) => {
     return {
-        userReducer: state.userReducer,
+        photoReducer: state.photoReducer,
     }
 }
 const mapDispatchToProps = dispatch => {
     return {
-        getUser: () => dispatch(getUser())
+        getPhotos: (id) => dispatch(getPhotos(id))
     }
 }
 

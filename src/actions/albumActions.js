@@ -1,27 +1,29 @@
-import types from '../action_types/user';
+import types from '../action_types/album';
 
-export const getUser = () => {
+export const getAlbums = (id: number) => {
     return {
-        type: types.GET_USER,
+        type: types.GET_ALBUM,
+        id: id
     }
 };
 
-export const getUsersBehind = () => {
+export const getAlbumsBehind = (id) => {
   return {
-      type: types.GET_USER_BEHIND,
+      type: types.GET_ALBUM_BEHIND,
+      data: id
   }
 };
 
-export const getUsersSuccess = (data) => {
+export const getAlbumsSuccess = (data) => {
     return {
-        type: types.GET_USER_SUCCESS,
+        type: types.GET_ALBUM_SUCCESS,
         data: data
     }
 };
 
-export const getUsersError = (data) => {
+export const getAlbumsError = (data) => {
     return {
-        type: types.GET_USER_ERROR,
+        type: types.GET_ALBUM_ERROR,
         data: data
     }
 };

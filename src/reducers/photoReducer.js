@@ -1,4 +1,4 @@
-import types from '../action_types/post';
+import types from '../action_types/photo';
 
 const init = {
     data: null,
@@ -6,26 +6,27 @@ const init = {
     errorMessage: null
 };
 
-export type postReducerProp = {
+export type photoReducerProp = {
     data: ?Array<any>,
     errorMessage: ?string,
     load: boolean
 };
 
-const postReducer = (state: postReducerProp = init, action) => {
+const photoReducer = (state: photoReducerProp = init, action) => {
     switch (action.type) {
-        case types.GET_POST_BEHIND:
+        case types.GET_PHOTO_BEHIND:
             return {
                 ...state,
-                load: true
+                load: true,
+                data: null
             }
-        case types.GET_POST_SUCCESS:
+        case types.GET_PHOTO_SUCCESS:
             return {
                 ...state,
                 load: false,
                 data: action.data
             }
-        case types.GET_POST_ERROR:
+        case types.GET_PHOTO_ERROR:
             return {
                 ...state,
                 load: false,
@@ -36,4 +37,4 @@ const postReducer = (state: postReducerProp = init, action) => {
     }
 }
 
-export default postReducer;
+export default photoReducer;

@@ -1,27 +1,28 @@
-import types from '../action_types/user';
+import types from '../action_types/post';
 
-export const getUser = () => {
+export const getPosts = (id: number) => {
     return {
-        type: types.GET_USER,
+        type: types.GET_POST,
+        id: id
     }
 };
 
-export const getUsersBehind = () => {
+export const getPostsBehind = () => {
   return {
-      type: types.GET_USER_BEHIND,
+      type: types.GET_POST_BEHIND,
   }
 };
 
-export const getUsersSuccess = (data) => {
+export const getPostsSuccess = (data) => {
     return {
-        type: types.GET_USER_SUCCESS,
+        type: types.GET_POST_SUCCESS,
         data: data
     }
 };
 
-export const getUsersError = (data) => {
+export const getPostsError = (data) => {
     return {
-        type: types.GET_USER_ERROR,
+        type: types.GET_POST_ERROR,
         data: data
     }
 };

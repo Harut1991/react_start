@@ -5,6 +5,8 @@ import {getPosts} from "../../actions/postActions";
 import Post from "../../components/post/Post";
 import type {postReducerProp} from "../../reducers/postReducer";
 import {ErrorMessage} from "../../utils/customHooks";
+import {withRouter} from "react-router";
+import UserPostsCommentContainer from "../user_posts_comment/userPostsCommentContainer";
 
 type Props = {|
     getPosts: (id: number) => any,
@@ -16,7 +18,7 @@ type Props = {|
     }
 |};
 
-function UserPosts(props: Props) {
+function UserPostsContainer(props: Props) {
     ErrorMessage({reducer: props.postReducer});
 
     const getHandler = useCallback(() => {
@@ -30,7 +32,14 @@ function UserPosts(props: Props) {
             {props.postReducer.data &&
             <ul>
                 {props.postReducer.data.map((res, index) => {
-                    return <Post key={index} {...res} />
+                    return (
+                        <li key={index}>
+                            <div className="card text-center">
+                                <Post  {...res} />
+                                <UserPostsCommentContainer id={res.id} />
+                            </div>
+                        </li>
+                    )
                 })}
             </ul>
             }
@@ -49,4 +58,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserPosts);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(UserPostsContainer));

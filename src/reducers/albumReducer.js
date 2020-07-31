@@ -1,39 +1,40 @@
-import types from '../action_types/user';
+import types from '../action_types/album';
 
-const init = {
-    data: null,
-    load: false,
-    errorMessage: null
-};
+const init = [];
 
-export type userReducerProp = {
+export type albumReducerProp = {
     data: ?Array<any>,
     errorMessage: ?string,
     load: boolean
 };
 
-const userReducer = (state: userReducerProp = init, action) => {
+const albumReducer = (state: albumReducerProp = init, action) => {
+    const stateClone = [...state];
     switch (action.type) {
-        case types.GET_USER_BEHIND:
-            return {
-                ...state,
+        case types.GET_ALBUM_BEHIND:
+            stateClone[action.id] = {
+                data: undefined,
+                errorMessage: undefined,
                 load: true
             }
-        case types.GET_USER_SUCCESS:
-            return {
-                ...state,
+            return stateClone;
+        case types.GET_ALBUM_SUCCESS:
+            stateClone[action.id] = {
                 load: false,
-                data: action.data
+                data: action.data,
+                errorMessage: undefined
             }
-        case types.GET_USER_ERROR:
-            return {
-                ...state,
+            return stateClone;
+        case types.GET_ALBUM_ERROR:
+            stateClone[action.id] = {
                 load: false,
+                data: undefined,
                 errorMessage: action.data
             }
+            return stateClone;
         default:
             return state
     }
 }
 
-export default userReducer;
+export default albumReducer;
