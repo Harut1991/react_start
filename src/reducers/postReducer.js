@@ -33,21 +33,21 @@ const postReducer = (state: postReducerProp = init, action) => {
                 errorMessage: action.data
             }
         case commentTypes.GET_COMMENT_BEHIND:
-            state.data.find(r => r.id == action.id ).comments = {
+            state.data.find(r => r.id === action.id ).comments = {
                 data: null,
                 load: true,
                 errorMessage: null
             }
             return {...state}
         case commentTypes.GET_COMMENT_SUCCESS:
-            state.data.find(r => r.id == action.id ).comments = {
+            state.data.find(r => r.id === action.id ).comments = {
                 data: action.data,
                 load: false,
                 errorMessage: null
             }
             return {...state}
         case commentTypes.GET_COMMENT_ERROR:
-            state.data.find(r => r.id == action.id ).comments = {
+            state.data.find(r => r.id === action.id ).comments = {
                 data: null,
                 load: false,
                 errorMessage: action.data

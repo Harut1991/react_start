@@ -2,7 +2,7 @@ import { createSelector } from 'reselect'
 const getPostsSelector = state => state.postReducer
 const getPostCommentSelector = (id) => {
     return  (state) => {
-         return  state.postReducer.data.find(i => i.id == id);
+         return  state.postReducer.data.find(i => i.id === id);
     }
 }
 export const postSelector = createSelector(
