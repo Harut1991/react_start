@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Photo component test 1`] = `
+<div
+  className="card"
+>
+  <img
+    alt="Card image cap"
+    className="card-img-top"
+    src="http://test"
+  />
+  <div
+    className="card-body"
+  >
+    <h5
+      className="card-title"
+    >
+      test
+    </h5>
+    <a
+      className="btn btn-primary"
+      href="http://test"
+    >
+      Go to site
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Post component test 1`] = `
+Array [
+  <div
+    className="card-header"
+  >
+    test
+  </div>,
+  <div
+    className="card-body"
+  >
+    <h5
+      className="card-title"
+    >
+      test
+    </h5>
+  </div>,
+]
+`;

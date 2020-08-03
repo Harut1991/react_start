@@ -1,44 +1,39 @@
 import React, {useCallback, useEffect} from 'react';
-import { connect } from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import Spinner from "../../components/spinner/Spinner";
 import {ErrorMessage} from "../../utils/customHooks";
 import {getPhotos} from "../../actions/photoActions";
-import type {photoReducerProp} from "../../reducers/photoReducer";
 import PhotoContainer from "../../containers/photo/photoContainer";
+import {photoSelector} from "../../selectors/photoSelector";
 
 type Props = {|
-    getPhotos: () => any,
-    photoReducer: photoReducerProp
+    match: {
+        params: {
+            id: number
+        }
+    }
 |};
 
 function Photos(props: Props) {
-  ErrorMessage({reducer: props.photoReducer});
+  const photos = useSelector(photoSelector);
+  const dispatch = useDispatch();
+
+  ErrorMessage({reducer: photos});
 
   const getHandler = useCallback(() => {
-      props.getPhotos(props.match.params.id);
+      dispatch(getPhotos(props.match.params.id));
   },[props.match.params.id]);
 
   useEffect(getHandler,[props.match.params.id]);
 
   return (
-        <Spinner load={props.photoReducer.load}>
-            {props.photoReducer.data &&
-                <PhotoContainer data={props.photoReducer.data}/>
+        <Spinner load={photos.load}>
+            {photos.data &&
+                <PhotoContainer data={photos.data}/>
             }
-
         </Spinner>
   );
 }
 
-const  mapStateToProps = (state) => {
-    return {
-        photoReducer: state.photoReducer,
-    }
-}
-const mapDispatchToProps = dispatch => {
-    return {
-        getPhotos: (id) => dispatch(getPhotos(id))
-    }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Photos);
+export default Photos;

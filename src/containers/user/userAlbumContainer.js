@@ -1,58 +1,35 @@
 import React, {memo, useCallback, useEffect, useState} from 'react';
 import Spinner from "../../components/spinner/Spinner";
-import {connect} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {getAlbums} from "../../actions/albumActions";
 import {ErrorMessage} from "../../utils/customHooks";
 import UserAlbum from "../../components/user-album/userAlbum";
+import {albumSelector} from "../../selectors/albumSelector";
 
 type Props = {|
-    load: boolean,
-    id: number,
-    albumReducer: Object,
-    getAlbums: (id) => any
+    id: number
 |};
 
 function UserAlbumContainer(props: Props) {
-    ErrorMessage({reducer: props.albumReducer});
-
-    const [data, setData] = useState({
-        load: true,
-        data: null,
-        errorMessage: null
-    });
+    const albums = useSelector(albumSelector(props.id));
+    const dispatch = useDispatch();
+    ErrorMessage({reducer: albums});
 
     const getHandler = useCallback(() => {
-        props.getAlbums(props.id);
+        dispatch(getAlbums(props.id));
     },[props.id]);
 
     useEffect(getHandler,[props.id]);
 
-    useEffect(() => {
-        if(Object.keys(props.albumReducer).includes(String(props.id)) && props.albumReducer[props.id]) {
-            setData(props.albumReducer[props.id]);
-        }
-    }, [props.albumReducer]);
-
     return (
-        <Spinner load={data.load}>
+        <Spinner load={albums.load}>
             <div className="card-columns">
-                {data.data && data.data.map((res, index) => {
+                {albums.data && albums.data.map((res, index) => {
                     return <UserAlbum key={index} {...res} />
                 })}
             </div>
         </Spinner>
     )
-
-}
-const  mapStateToProps = (state) => {
-    return {
-        albumReducer: state.albumReducer,
-    }
-}
-const mapDispatchToProps = dispatch => {
-    return {
-        getAlbums: (id: number) => dispatch(getAlbums(id))
-    }
 }
 
-export default memo(connect(mapStateToProps, mapDispatchToProps)(UserAlbumContainer));
+export default memo(UserAlbumContainer);

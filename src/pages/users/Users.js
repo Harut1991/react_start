@@ -1,43 +1,29 @@
 import React, {useCallback, useEffect} from 'react';
 import {getUser} from "../../actions/userActions";
-import { connect } from 'react-redux'
+import { useDispatch, useSelector} from 'react-redux'
 import Spinner from "../../components/spinner/Spinner";
-import type {userReducerProp} from "../../reducers/userReducer";
 import UserContainer from "../../containers/user/userContainer";
 import {ErrorMessage} from "../../utils/customHooks";
+import {userSelector} from "../../selectors/userSelector";
 
-type Props = {|
-    getUser: () => any,
-    userReducer: userReducerProp
-|};
+function Users() {
+  const users = useSelector(userSelector);
+  const dispatch = useDispatch();
 
-function Users(props: Props) {
-  ErrorMessage({reducer: props.userReducer});
+  ErrorMessage({reducer: users});
 
   const getHandler = useCallback(() => {
-      props.getUser();
+      dispatch(getUser());
   });
 
   useEffect(getHandler,[]);
 
   return (
-        <Spinner load={props.userReducer.load}>
-            {props.userReducer.data &&
-                <UserContainer data={props.userReducer.data}  />
+        <Spinner load={users.load}>
+            {users.data &&
+                <UserContainer data={users.data}  />
             }
         </Spinner>
   );
 }
-
-const  mapStateToProps = (state) => {
-    return {
-        userReducer: state.userReducer,
-    }
-}
-const mapDispatchToProps = dispatch => {
-    return {
-        getUser: () => dispatch(getUser())
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Users);
+export default Users;
