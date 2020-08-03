@@ -11,7 +11,7 @@ import {postSelector} from "../../selectors/postSelector";
 type Props = {|
     match: {
         params: {
-            id: number
+            userId: number
         }
     }
 |};
@@ -23,10 +23,10 @@ function UserPostsContainer(props: Props) {
     ErrorMessage({reducer: posts});
 
     const getHandler = useCallback(() => {
-        dispatch(getPosts(props.match.params.id));
-    }, [props.match.params.id]);
+        dispatch(getPosts(props.match.params.userId));
+    }, [props.match.params.userId]);
 
-    useEffect(getHandler,[props.match.params.id]);
+    useEffect(getHandler,[props.match.params.userId]);
 
     return (
         <Spinner load={posts.load}>

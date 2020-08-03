@@ -16,7 +16,7 @@ function Routers() {
                            <Route key={index} {...res} />
                            {children && children.map((result, ind) => {
                                 result.path = res.path + result.path;
-                                return <Route key={ind*index+100} {...result} />
+                                return <Route key={`${index}_${ind}`} {...result} />
                            })}
                        </>
                    )

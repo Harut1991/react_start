@@ -12,7 +12,7 @@ function UserAlbum(props: Props) {
         <div className="card">
             <div className="card-body">
                 <h5 className="card-title">{props.title}</h5>
-                <Link to={`/photos/${props.id}`}  className="btn btn-primary">Photos</Link>
+                <Link to={`/users/${props.userId}/photos/${props.id}`}  className="btn btn-primary">Photos</Link>
             </div>
         </div>
     )
