@@ -6,7 +6,21 @@ function Routers() {
     return (
         <Switch>
             <Suspense fallback={<div>Loading...</div>}>
-                {urls.map((res, index) => <Route key={index} {...res} />)}
+                {urls.map((res, index) => {
+                   const children = res.children;
+                   if (children){
+                       delete res.children;
+                   }
+                   return (
+                       <>
+                           <Route key={index} {...res} />
+                           {children && children.map((result, ind) => {
+                                result.path = res.path + result.path;
+                                return <Route key={ind*index+100} {...result} />
+                           })}
+                       </>
+                   )
+                })}
             </Suspense>
         </Switch>
     );
