@@ -13,6 +13,7 @@ type Props = {|
 function UserAlbumContainer(props: Props) {
     const albums = useSelector(albumSelector(props.id));
     const dispatch = useDispatch();
+
     ErrorMessage({reducer: albums});
 
     const getHandler = useCallback(() => {

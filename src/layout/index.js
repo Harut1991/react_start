@@ -24,8 +24,9 @@ function Layout(props: Props) {
                             <li className="nav-item">
                                 <NavLink className="link" activeClassName='active' to='/users'>Users</NavLink>
                             </li>
+
                         </ul>
-                    </div>
+                    </div>chat
                 </nav>
                 <div className="context">
                     {props.children}
