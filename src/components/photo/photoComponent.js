@@ -1,11 +1,8 @@
 import React from 'react';
 
 type Props = {|
-    albumId: number,
-    id: number,
     thumbnailUrl: string,
     title: string,
-    url: string
 |};
 
 function PhotoComponent(props: Props) {
