@@ -9,6 +9,7 @@ const Photos = React.lazy(() => import('../pages/photos/photos'));
 
 export default [
     {path: '/', exact: true, component: Home},
+    {path: '/index.html',  component: Home},
     {path: '/about',exact: true, component: About},
     {path: '/users', exact: true, component: Users},
     {path: '/photos/:id', exact: true, component: Photos},
