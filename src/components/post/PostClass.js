@@ -2,7 +2,7 @@ import React from 'react';
 import './post.css';
 
 
-class PostClass extends React.Component{
+class PostClass extends React.PureComponent{
     constructor(props) {
         super(props);
         this.state = {

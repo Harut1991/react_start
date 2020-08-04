@@ -17,16 +17,3 @@ ReactDOM.render(
 );
 
 serviceWorker.unregister();
-var observer = new PerformanceObserver(list => {
-    let result = 0;
-    list.getEntries().forEach(entry => {
-            console.log("Name: "       + entry.name      +
-                ", Type: "     + entry.entryType +
-                ", Start: "    + entry.startTime +
-                ", Duration: " + entry.duration  + "\n");
-        result+= entry.duration;
-    })
-    console.log(result)
-});
-observer.observe({entryTypes: ['resource', 'mark', 'measure']});
-performance.mark('registered-observer');
