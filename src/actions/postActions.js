@@ -26,3 +26,11 @@ export const getPostsError = (data) => {
         data: data
     }
 };
+
+export const editPost = (id, body) => {
+    return {
+        type: types.EDIT_POST,
+        id: id,
+        body: body,
+    }
+}

@@ -26,7 +26,7 @@ function Layout(props: Props) {
                             </li>
 
                         </ul>
-                    </div>chat
+                    </div>
                 </nav>
                 <div className="context">
                     {props.children}

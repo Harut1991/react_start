@@ -8,7 +8,12 @@ const init = {
 };
 
 export type postReducerProp = {
-    data: ?Array<any>,
+    data: ?Array<{
+        data: any,
+        load: boolean,
+        errorMessage: any,
+        comments: any
+    }>,
     errorMessage: ?string,
     load: boolean
 };
@@ -32,6 +37,10 @@ const postReducer = (state: postReducerProp = init, action) => {
                 load: false,
                 errorMessage: action.data
             }
+        case types.EDIT_POST:
+            state.data.find(r => r.id === action.id ).body = action.body;
+
+            return {...state}
         case commentTypes.GET_COMMENT_BEHIND:
             state.data.find(r => r.id === action.id ).comments = {
                 data: null,

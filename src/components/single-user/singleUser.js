@@ -26,6 +26,5 @@ function SingleUser(props: Props) {
             </div>
         </>
     )
-
 }
 export default SingleUser;

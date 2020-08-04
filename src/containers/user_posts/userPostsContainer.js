@@ -1,32 +1,29 @@
 import React, {useCallback, useEffect} from 'react';
 import { useDispatch, useSelector} from 'react-redux'
 import Spinner from "../../components/spinner/Spinner";
-import {getPosts} from "../../actions/postActions";
+import {editPost, getPosts} from "../../actions/postActions";
 import Post from "../../components/post/Post";
 import {ErrorMessage} from "../../utils/customHooks";
-import {withRouter} from "react-router";
-import UserPostsCommentContainer from "../user_posts_comment/userPostsCommentContainer";
+import { useParams } from "react-router";
 import {postSelector} from "../../selectors/postSelector";
+import UserPostsCommentContainer from "../user_posts_comment/userPostsCommentContainer";
 
-type Props = {|
-    match: {
-        params: {
-            userId: number
-        }
-    }
-|};
-
-function UserPostsContainer(props: Props) {
+function UserPostsContainer() {
     const posts = useSelector(postSelector);
     const dispatch = useDispatch();
+    const {userId} = useParams();
 
     ErrorMessage({reducer: posts});
 
     const getHandler = useCallback(() => {
-        dispatch(getPosts(props.match.params.userId));
-    }, [props.match.params.userId]);
+        dispatch(getPosts(userId));
+    }, [userId]);
 
-    useEffect(getHandler,[props.match.params.userId]);
+    useEffect(getHandler,[userId]);
+
+    const save = (id, body) => {
+        dispatch(editPost(id, body));
+    }
 
     return (
         <Spinner load={posts.load}>
@@ -34,9 +31,9 @@ function UserPostsContainer(props: Props) {
             <ul>
                 {posts.data.map((res, index) => {
                     return (
-                        <li key={index}>
+                        <li key={index} className="li">
                             <div className="card text-center">
-                                <Post  {...res} />
+                                <Post  {...res} save={(body, id) => save(body, id )}/>
                                 <UserPostsCommentContainer id={res.id} />
                             </div>
                         </li>
@@ -48,4 +45,4 @@ function UserPostsContainer(props: Props) {
     );
 }
 
-export default withRouter(UserPostsContainer);
+export default UserPostsContainer;
