@@ -1,12 +1,13 @@
+// @flow
 import React from 'react';
-import UserPostsClassContainer from "../../containers/user_posts/userPostsClassContainer";
+import UserPostsClassContainer from '../../containers/user_posts/userPostsClassContainer';
 
-class UserPostsClass extends React.Component{
-    render = () =>  {
-        return <>
-            <UserPostsClassContainer />
-        </>
-    }
+class UserPostsClass extends React.Component {
+    render = () => (
+      <>
+        <UserPostsClassContainer />
+      </>
+    )
 }
 
 export default UserPostsClass;

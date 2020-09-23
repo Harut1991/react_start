@@ -1,27 +1,20 @@
+// @flow
 import types from '../action_types/user';
 
-export const getUser = () => {
-    return {
-        type: types.GET_USER,
-    }
-};
+export const getUser = () => ({
+  type: types.GET_USER
+});
 
-export const getUsersBehind = () => {
-  return {
-      type: types.GET_USER_BEHIND,
-  }
-};
+export const getUsersBehind = () => ({
+  type: types.GET_USER_BEHIND
+});
 
-export const getUsersSuccess = (data) => {
-    return {
-        type: types.GET_USER_SUCCESS,
-        data: data
-    }
-};
+export const getUsersSuccess = (data) => ({
+  type: types.GET_USER_SUCCESS,
+  data
+});
 
-export const getUsersError = (data) => {
-    return {
-        type: types.GET_USER_ERROR,
-        data: data
-    }
-};
+export const getUsersError = (data) => ({
+  type: types.GET_USER_ERROR,
+  data
+});

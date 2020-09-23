@@ -1,5 +1,6 @@
+// @flow
 import React from 'react';
-import PhotoComponent from "../../components/photo/photoComponent";
+import PhotoComponent from '../../components/photo/photoComponent';
 
 type Props = {|
     data: Array<
@@ -13,13 +14,11 @@ type Props = {|
     >
 |};
 
-function PhotoContainer(props: Props) {
-    return (
-        <div className="card-columns">
-            {props.data && props.data.map((res, index) => {
-                return <PhotoComponent {...res} key={index} />
-            })}
-        </div>
-    )
+function PhotoContainer({ data }: Props) {
+  return (
+    <div className="card-columns">
+      {data && data.map((res, index) => <PhotoComponent {...res} key={index} />)}
+    </div>
+  );
 }
 export default PhotoContainer;

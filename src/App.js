@@ -1,16 +1,16 @@
+// @flow
 import React from 'react';
-import Routers from "./routing/route";
-import Layout from "./layout";
-import {NotificationContainer} from "react-notifications";
+import { NotificationContainer } from 'react-notifications';
+import Routers from './routing/route';
+import Layout from './layout';
 
 function App() {
   return (
-      <Layout>
-           <Routers />
-           <NotificationContainer/>
-      </Layout>
+    <Layout>
+      <Routers />
+      <NotificationContainer />
+    </Layout>
   );
 }
-
 
 export default App;

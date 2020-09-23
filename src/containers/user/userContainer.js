@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
-import SingleUser from "../../components/single-user/singleUser";
-import UserAlbumContainer from "./userAlbumContainer";
+// @flow
+import React, { useState } from 'react';
+import SingleUser from '../../components/single-user/singleUser';
+import UserAlbumContainer from './userAlbumContainer';
 
 type Props = {|
     data: Array<{
@@ -14,31 +15,27 @@ type Props = {|
     }>
 |};
 
-function UserContainer(props: Props) {
-    const [albumVisable, setAlbumVisable] = useState({});
+function UserContainer({ data }: Props) {
+  const [albumVisable, setAlbumVisable] = useState({});
 
-    const loadAlbum = (id: number) => {
-        const album = {...albumVisable};
-        album[id] = !!!album[id];
-        setAlbumVisable(album);
-    };
+  const loadAlbum = (id: number) => {
+    const album = { ...albumVisable };
+    album[id] = !album[id];
+    setAlbumVisable(album);
+  };
 
-    return (
-        <ul>
-            {props.data.map((res, index) => {
-                return (
-                    <li key={index}>
-                        <div className="card">
-                            <SingleUser loadAlbum={loadAlbum} {...res} />
-                            {albumVisable[res.id] &&
-                                <UserAlbumContainer load={!!albumVisable[res.id]} id={res.id}  />
-                            }
-                        </div>
-                    </li>
-                )
-            })}
-        </ul>
-    )
-
+  return (
+    <ul>
+      {data.map((res, index) => (
+        <li key={index}>
+          <div className="card">
+            <SingleUser loadAlbum={loadAlbum} {...res} />
+            {albumVisable[res.id]
+                                && <UserAlbumContainer load={!!albumVisable[res.id]} id={res.id} />}
+          </div>
+        </li>
+      ))}
+    </ul>
+  );
 }
 export default UserContainer;
