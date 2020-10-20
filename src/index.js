@@ -1,16 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'react-notifications/lib/notifications.css';
 import { Provider } from 'react-redux';
-import App from './App';
+
+import { NotificationContainer } from 'react-notifications';
 import * as serviceWorker from './serviceWorker';
+import Routers from './routing';
 import store from './store';
+
+// import './index.scss';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <Routers />
+      <NotificationContainer />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

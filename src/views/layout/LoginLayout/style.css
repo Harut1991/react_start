@@ -1,0 +1,17 @@
+.nav-item .link {
+    color: #ffd3d3 ;
+    margin-right: 10px;
+}
+
+.nav-item .active {
+    color: #060303 !important;
+}
+
+.context {
+    min-height: 900px;
+    padding: 40px;
+}
+
+.footer{
+    color: white;
+}

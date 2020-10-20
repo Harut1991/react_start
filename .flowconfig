@@ -1,4 +1,3 @@
-
 [ignore]
 
 .*/build/.*
@@ -7,32 +6,14 @@
 [include]
 
 [libs]
-/flow-typed/type-def
 
 [lints]
 
 [options]
 
-module.file_ext=.js
-module.file_ext=.jsx
-module.file_ext=.mjs
-module.file_ext=.json
 module.file_ext=.sass
 module.file_ext=.scss
-
+module.file_ext=.js
 esproposal.decorators=ignore
 
-# aliases
-module.name_mapper='^components' ->'<PROJECT_ROOT>/src/components'
-module.name_mapper='^containers' ->'<PROJECT_ROOT>/src/containers'
-module.name_mapper='^core' ->'<PROJECT_ROOT>/src/core'
-module.name_mapper='^config' ->'<PROJECT_ROOT>/src/config'
-module.name_mapper='^assets' ->'<PROJECT_ROOT>/src/assets'
-module.name_mapper='^lib' ->'<PROJECT_ROOT>/src/lib'
-module.name_mapper='^pages' ->'<PROJECT_ROOT>/src/pages'
-module.name_mapper='^scss' ->'<PROJECT_ROOT>/src/scss'
-
 [strict]
-
-[version]
-^0.119.0
