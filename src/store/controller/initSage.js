@@ -9,8 +9,8 @@ const delay = time => new Promise(resolve => setTimeout(resolve, time));
  */
 export function* fetchInit() {
   try {
-    const { data } = yield Api.getTest({ userId: 2 });
-    // yield delay(2000)
+    // const { data } = yield Api.getTest({ userId: 2 });
+    yield delay(2000)
     yield put(initAppSuccess({ isLoggedIn: true, isReady: true }));
   } catch (e) {
     yield yield put(initAppError('{ isLoggedIn: false, isReady: false }'));
