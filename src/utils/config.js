@@ -1,7 +1,3 @@
-// This file created for absolutely general configurations
-// If you considered to add getPlayers method's route url of the aml,
-// this file is not the correct place  #see 'core/settings'
-
 import { Process as process } from 'node/process';
 
 const config = {
