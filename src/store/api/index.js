@@ -1,8 +1,8 @@
 /**
  * @flow
  */
-import config from '../../utils/config';
-import NetworkService from '../../core/services/network/NetworkService';
+import NetworkService from '@core/services/network/NetworkService';
+import config from '@utils/config';
 
 /**
  * @class Api

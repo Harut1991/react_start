@@ -1,7 +1,7 @@
 // @flow
-import types from '../types/init';
-import { initAppState } from '../../utils/states';
-import { ACTION_STATUSES } from '../../utils/actionStatus';
+import { initAppState } from '@utils/states';
+import { ACTION_STATUSES } from '@utils/actionStatus';
+import types from '@store/types/init';
 
 const initialState = {
   init: initAppState

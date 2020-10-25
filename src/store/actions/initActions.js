@@ -1,6 +1,6 @@
 // @flow
-import types from '../types/init';
-import type { BaseAction } from '../../types';
+import type { BaseAction } from '@models/index';
+import types from '@store/types/init';
 
 export const initApp = (): BaseAction => ({
   type: types.INIT_APP

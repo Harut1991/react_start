@@ -3,7 +3,7 @@
  */
 
 import { useDispatch, useSelector } from 'react-redux';
-import actionStatuses from '../utils/actionStatus';
+import actionStatuses from '@utils/actionStatus';
 
 type Props = {
   selector: () => any

@@ -1,10 +1,8 @@
 // @flow
+import React, { memo, type Node } from 'react';
 import { Redirect } from 'react-router-dom';
-import React, { memo } from 'react';
-import type { Node } from 'react';
-import useInitApp from '../../../hooks/useInitApp';
 
-import './style.css';
+import useInitApp from '@hooks/useInitApp';
 
 type Props = {|
     children: Node

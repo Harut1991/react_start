@@ -1,7 +1,9 @@
 import React from 'react';
 
 /**
- * @returns {Node}
+ *
+ * @return {*}
+ * @constructor
  */
 function Home() {
   return (

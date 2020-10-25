@@ -2,7 +2,8 @@ import React from 'react';
 
 /**
  *
- * @returns {Node}
+ * @return {*}
+ * @constructor
  */
 function About() {
   return (

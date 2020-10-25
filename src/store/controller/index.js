@@ -1,9 +1,10 @@
 import { takeLatest } from 'redux-saga/effects';
-import initTypes from '../types/init';
+import initTypes from '@store/types/init';
 import { fetchInit } from './initSage';
 
 /**
  *
+ * @return {IterableIterator<ForkEffect>}
  */
 function* sagas() {
   yield takeLatest(initTypes.INIT_APP, fetchInit);

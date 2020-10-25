@@ -1,9 +1,8 @@
 /* eslint-disable */
 
-import settings from '../../../utils/settings'
-import CacheService from '../storage/CacheService';
-
 import exceptionDetector from './interceptors/exceptionDetector';
+import CacheService from '@core/services/storage/CacheService';
+import settings from '@utils/settings'
 
 const NETWORK_SERVICE = settings.NETWORK_SERVICE;
 

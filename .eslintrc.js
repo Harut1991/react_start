@@ -60,6 +60,10 @@ module.exports = {
         '_onBlur'
       ]
     }],
+    "no-mixed-operators": 0,
+    "import/no-extraneous-dependencies": 0,
+    "react/jsx-props-no-spreading": 0,
+    "import/no-unresolved": 0,
     'require-atomic-updates': ['error'],
     'accessor-pairs': ['error'],
     'class-methods-use-this': ['error'],

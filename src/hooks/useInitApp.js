@@ -4,9 +4,9 @@
 
 import { useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { initAppSelector } from '../store/selectors/initSelector';
-import { initApp } from '../store/actions/initActions';
-import {ACTION_STATUSES} from "../utils/actionStatus";
+import { initAppSelector } from '@store/selectors/initSelector';
+import { initApp } from '@store/actions/initActions';
+import { ACTION_STATUSES } from '@utils/actionStatus';
 
 /**
  * useInitApp

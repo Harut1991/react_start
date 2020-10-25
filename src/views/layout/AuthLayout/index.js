@@ -1,8 +1,8 @@
 // @flow
 import { NavLink, Redirect } from 'react-router-dom';
 import React, { memo, type Node } from 'react';
-import './style.css';
-import useInitApp from '../../../hooks/useInitApp';
+
+import useInitApp from '@hooks/useInitApp';
 
 type Props = {|
     children: Node
