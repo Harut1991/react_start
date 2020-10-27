@@ -25,15 +25,15 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject",
     "lint": "eslint ./",
     "flow": "flow"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
+      "pre-commit": "npm run lint && npm run flow"
     }
   },
   "private": true,
@@ -44,6 +44,7 @@
     "bootstrap": "^4.5.0",
     "enzyme": "^3.11.0",
     "express": "^4.17.1",
+    "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-notifications": "^1.6.0",
@@ -71,6 +72,11 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "standard": {
+    "ignore": [
+      "flow-typed/"
     ]
   }
 }

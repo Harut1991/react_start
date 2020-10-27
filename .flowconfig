@@ -6,13 +6,32 @@
 [include]
 
 [libs]
+flow-typed/type-def
 
 [lints]
 
 [options]
+module.file_ext=.js
+module.file_ext=.jsx
+module.file_ext=.mjs
+module.file_ext=.json
 module.file_ext=.sass
 module.file_ext=.scss
-module.file_ext=.js
+
 esproposal.decorators=ignore
+esproposal.optional_chaining=enable
+# aliases
+module.name_mapper='^@assets\(.*\)$' -> '<PROJECT_ROOT>/src/assets/\1'
+module.name_mapper='^@store\(.*\)$' -> '<PROJECT_ROOT>/src/store/\1'
+module.name_mapper='^@core\(.*\)$' -> '<PROJECT_ROOT>/src/core/\1'
+module.name_mapper='^@routing\(.*\)$' -> '<PROJECT_ROOT>/src/routing/\1'
+module.name_mapper='^@helpers\(.*\)$' -> '<PROJECT_ROOT>/src/helpers/\1'
+module.name_mapper='^@hooks\(.*\)$' -> '<PROJECT_ROOT>/src/hooks/\1'
+module.name_mapper='^@utils\(.*\)$' -> '<PROJECT_ROOT>/src/utils/\1'
+module.name_mapper='^@views\(.*\)$' -> '<PROJECT_ROOT>/src/views/\1'
+module.name_mapper='^@models\(.*\)$' -> '<PROJECT_ROOT>/src/models/\1'
+module.name_mapper='^@pages\(.*\)$' -> '<PROJECT_ROOT>/src/views/pages/\1'
+module.name_mapper='^@containers\(.*\)$' -> '<PROJECT_ROOT>/src/views/containers/\1'
+module.name_mapper='^@components\(.*\)$' -> '<PROJECT_ROOT>/src/views/components/\1'
 
 [strict]

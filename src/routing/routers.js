@@ -1,12 +1,12 @@
 // @flow
-import React from 'react';
+import React, { type Node } from 'react';
 
 import LoginLayout from '@views/layout/LoginLayout';
 import AuthLayout from '@views/layout/AuthLayout';
 
-const Login = React.lazy(() => import('@views/pages/login'));
-const Home = React.lazy(() => import('@views/pages/home'));
-const About = React.lazy(() => import('@views/pages/about'));
+const Login = React.lazy<Node>(() => import('@views/pages/login'));
+const Home = React.lazy<Node>(() => import('@views/pages/home'));
+const About = React.lazy<Node>(() => import('@views/pages/about'));
 
 export default [
   {

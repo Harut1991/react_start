@@ -66,3 +66,5 @@ This section has moved here: https://facebook.github.io/create-react-server/docs
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-server/docs/troubleshooting#npm-run-build-fails-to-minify
+ ### netstat -ano | findstr :<PORT>
+     

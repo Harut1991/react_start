@@ -3,7 +3,7 @@ import initTypes from '@store/types/init';
 import { fetchInit } from './initSage';
 
 /**
- *
+ * @description saga
  * @return {IterableIterator<ForkEffect>}
  */
 function* sagas() {

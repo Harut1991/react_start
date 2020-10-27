@@ -19,7 +19,7 @@ class Api {
    * @param {xxx} params - PlayerId
    * @returns {Promise<{data: xxxx}>} -
    */
-  async getTest(params: Object): { data: Object } {
+  async getTest(params: Object) {
     const { userId } = params;
     const { body } = await this.service.makeAPIGetRequest(
       'posts',

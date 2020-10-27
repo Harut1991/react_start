@@ -31,7 +31,7 @@ class CacheService {
   static getJson(key: string): Object | Array<any> {
     const json = CacheService.getItem(key);
 
-    return JSON.parse(json);
+    return JSON.parse(json || '{}');
   }
 
   static setAuthToken(token: string) {

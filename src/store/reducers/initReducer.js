@@ -1,13 +1,14 @@
 // @flow
-import { initAppState } from '@utils/states';
+import type { BaseAction, InitStateModel } from '@models';
 import { ACTION_STATUSES } from '@utils/actionStatus';
+import { initAppState } from '@utils/states';
 import types from '@store/types/init';
 
 const initialState = {
   init: initAppState
 };
 
-const initReducer = (state = initialState, action) => {
+const initReducer = (state: InitStateModel = initialState, action: BaseAction) => {
   switch (action.type) {
     case types.INIT_APP:
       return {

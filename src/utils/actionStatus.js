@@ -1,6 +1,4 @@
 /**
- * Copyright (c), BetConstruct.RMT
- * @author Ruben Aprikyan [ruben.aprikyan@betconstruct.com]
  *
  * @flow
  */
