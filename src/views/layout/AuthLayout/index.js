@@ -15,7 +15,7 @@ const AuthLayout = ({ children }: Props) => {
     return <Redirect to="/login" />;
   }
   if (!appState.data.isReady) {
-    return 'llllll';
+    return 'loading...';
   }
   return (
     <div className="App">

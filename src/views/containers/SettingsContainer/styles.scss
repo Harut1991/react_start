@@ -1,0 +1,28 @@
+.settings-container{
+  justify-content: space-between;
+
+  .center-column{
+    width: 6%;
+    position: relative;
+    .setting-arrows{
+      position: absolute;
+      bottom: 40%;
+    }
+  }
+  .column{
+    width: 46%;
+    height: 470px;
+    border: solid 1px rgba(0, 0, 0, 0.1);
+    border-bottom: none;
+    background-color: #ffffff;
+  }
+  .left-column{
+    border-left: none;
+  }
+  .right-column{
+    border-right: none;
+  }
+  .b-top-none{
+    border-top: none;
+  }
+}

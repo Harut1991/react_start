@@ -68,8 +68,9 @@ module.exports = {
     'accessor-pairs': ['error'],
     'class-methods-use-this': ['error'],
     indent: ['error', 2, { SwitchCase: 1 }],
-    'linebreak-style': ['error', 'windows'],
+    "linebreak-style": 0,
     'comma-dangle': ['error', 'never'],
+    'max-len': ["error", { "code": 150 }],
     'require-jsdoc': [2, {
       require: {
         FunctionDeclaration: true,

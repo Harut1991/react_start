@@ -10,12 +10,15 @@ type Props = {|
 
 const LoginLayout = ({ children }: Props) => {
   const { appState } = useInitApp();
+
   if (appState.data.isReady && appState.data.isLoggedIn) {
     return <Redirect to="/" />;
   }
+
   if (!appState.data.isReady) {
-    return 'llllll';
+    return 'loading...';
   }
+
   return (
     <div className="App">
       <nav className="navbar navbar-expand-lg navbar-light bg-primary">
