@@ -2,7 +2,7 @@
 import React, { Suspense } from 'react';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import urls from './routers';
-import type { RouteProps } from '../models';
+import type { RouteProps } from '../../models';
 
 const Routers = () => (
   <Router>

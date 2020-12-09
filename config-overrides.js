@@ -6,13 +6,12 @@ module.exports = function override(config) {
     '@assets': 'src/assets',
     '@store': 'src/store',
     '@core': 'src/core',
-    '@routing': 'src/routing',
-    '@helpers': 'src/helpers',
     '@hooks': 'src/hooks',
     '@utils': 'src/utils',
     '@views': 'src/views',
     '@components': 'src/views/components',
     '@containers': 'src/views/containers',
+    '@config': 'src/config',
     '@pages': 'src/views/pages'
   })(config);
 
